@@ -1,12 +1,15 @@
 # Oh-my-zsh installation path
-ZSH=/usr/share/oh-my-zsh/
+ZSH="$HOME/.oh-my-zsh"
 
-# Powerlevel10k theme path
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+# Powerlevel10k theme path (carregado quando disponível)
+[[ -r /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme ]] && source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # List of plugins used
-plugins=( git sudo zsh-256color zsh-autosuggestions zsh-syntax-highlighting )
-source $ZSH/oh-my-zsh.sh
+plugins=(git sudo)
+[[ -r "$ZSH/oh-my-zsh.sh" ]] && source "$ZSH/oh-my-zsh.sh"
+
+[[ -r /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+[[ -r /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # In case a command is not found, try to find the package that has it
 function command_not_found_handler {
@@ -85,9 +88,8 @@ alias .5='cd ../../../../..'
 alias mkdir='mkdir -p'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ -r ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
-# Display Pokemon
-#pokemon-colorscripts --no-title -r 1,3,6
-fastfetch
-PATH=~/.console-ninja/.bin:$PATH
+# Random Image
+[[ -o interactive && -x ~/.config/fastfetch/random-logo.sh ]] && ~/.config/fastfetch/random-logo.sh
+export PATH="$HOME/.local/bin:$PATH"
