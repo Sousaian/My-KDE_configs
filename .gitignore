@@ -1,0 +1,19 @@
+# Artefatos internos: nunca publicar tarefa ou relatório.
+CODEX_*
+KDE_UPDATE_REPORT*.md
+# Scratch, caches e backups locais (snapshots legítimos continuam visíveis).
+/__pycache__/
+/tests/__pycache__/
+/.cache/
+/scratch/
+/backups/
+*.bak
+*.swp
+.env
+.env.*
+!.env.example
+*.history
+.zsh_history
+.bash_history
+*.pem
+*.key
